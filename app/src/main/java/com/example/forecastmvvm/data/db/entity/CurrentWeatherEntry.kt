@@ -1,6 +1,7 @@
 package com.example.forecastmvvm.data.db.entity
 
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -18,15 +19,19 @@ data class CurrentWeatherEntry(
     val precip: Int,
     val pressure: Double,
     val temperature: Int,
+    @Embedded(prefix="location_")
+    val location: Location,
+    @Embedded(prefix="request_")
+    val request: Request,
     @SerializedName("uv_index")
     val uvIndex: Int,
     val visibility: Int,
     @SerializedName("weather_code")
     val weatherCode: Int,
-    @SerializedName("weather_descriptions")
-    val weatherDescriptions: List<String>,
-    @SerializedName("weather_icons")
-    val weatherIcons: List<String>,
+//    @SerializedName("weather_descriptions")
+//    val weatherDescriptions: List<String>,
+//    @SerializedName("weather_icons")
+//    val weatherIcons: List<String>,
     @SerializedName("wind_degree")
     val windDegree: Int,
     @SerializedName("wind_dir")

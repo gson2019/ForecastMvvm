@@ -7,12 +7,11 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: "kotlin-kapt"
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.forecastmvvm"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

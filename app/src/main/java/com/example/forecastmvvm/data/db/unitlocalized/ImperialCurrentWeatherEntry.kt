@@ -2,14 +2,15 @@ package com.example.forecastmvvm.data.db.unitlocalized
 
 import androidx.room.ColumnInfo
 
-class ImperialCurrentWeatherEntry(
-    @ColumnInfo(name="tempF")
+//英制的
+data class ImperialCurrentWeatherEntry(
+    @ColumnInfo(name="temperature")
     override val temperature: Double,
-    @ColumnInfo(name="condition_text")
-    override val conditionText: String,
-    @ColumnInfo(name="condition_icon")
-    override val conditionIconUrl: String,
-    @ColumnInfo(name="windMph")
-    override val windSpeed: Double
+    @ColumnInfo(name="windSpeed")
+    override val windSpeed: Double,
+    @ColumnInfo(name="feelslike")
+    override val feelsLikeTemperature: Double,
+    @ColumnInfo(name="precip")
+    override val precipitationVolumne: Double
 ) : UnitSpecificCurrentWeatherEntry {
 }

@@ -2,6 +2,8 @@ package com.example.forecastmvvm.api
 
 import com.example.forecastmvvm.BuildConfig.API_KEY
 import com.example.forecastmvvm.BuildConfig.BASE_URL
+import com.example.forecastmvvm.data.network.ConnectivityInterceptor
+import com.example.forecastmvvm.data.network.ConnectivityInterceptorImpl
 import com.example.forecastmvvm.data.network.response.CurrentWeatherResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
@@ -20,7 +22,7 @@ interface WeatherService {
 
     // static method
     companion object {
-        operator fun invoke(): WeatherService {
+        operator fun invoke(connectivityInterceptor: ConnectivityInterceptor): WeatherService {
             val requestInterceptor = Interceptor{ chain ->
                 val url = chain.request()
                     .url()
@@ -35,6 +37,7 @@ interface WeatherService {
             }
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
+                .addInterceptor(connectivityInterceptor)
                 .build()
             return Retrofit.Builder()
                 .client(okHttpClient)
