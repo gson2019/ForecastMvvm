@@ -16,6 +16,7 @@ class WeatherNetworkDataSourceImpl(private val weatherService: WeatherService) :
         try{
             val fetchedCurrentWeather = weatherService.getCurrentWeather(location)
                 .await()
+            Log.d("weather", fetchedCurrentWeather.toString())
             _downloadedCurrentWeather.postValue(fetchedCurrentWeather)
         }catch(e: NoConnectivityException){
             Log.e("Connectivity", "No Internet Connection", e)

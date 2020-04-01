@@ -35,15 +35,15 @@ class ForecastRepositoryImpl(private val currentWeatherDao : CurrentWeatherDao,
         }
     }
     private suspend fun initWeatherData(){
-        if(isFetchCurrentNeeded(ZonedDateTime.now().minusHours(1))){
+//        if(isFetchCurrentNeeded(ZonedDateTime.now().minusHours(1))){
             fetchCurrentWeather()
-        }
+//        }
 
     }
 
     private suspend fun fetchCurrentWeather(){
         weatherNetworkDataSource.fetchCurrentWeather(
-            "Los Angeles"
+            "San Francisco"
         )
     }
     private fun isFetchCurrentNeeded(lastFetchTime: ZonedDateTime) : Boolean{
